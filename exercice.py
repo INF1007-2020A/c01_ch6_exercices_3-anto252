@@ -3,24 +3,31 @@
 
 from random import randint
 from structs import Queue, Stack
-
+from collections import deque 
 
 def reverse_data(data: list = None):
     # TODO: Demander 10 valeurs à l'utilisateur,
     # les stocker dans une structure de données,
     # et les retourner en ordre inverse, sans utiliser de liste.
-
     if data is None:
-        pass  # Demander les valeurs ici
+        data = [input("Enter a value: ") for _ in range(10)]
 
-    reversed_data = None  # Stocker le résultat ici
-
+    reversed_data = Stack(len(data))
+    for x in range(len(data)-1 , -1, -1):
+        reversed_data.put(data[x])
+        
     return reversed_data
-
 
 def delete_nth_from_stack(data: Stack, position: int) -> Stack:
     # TODO: Supprimer le énième (position) élément de data et retourner la nouvelle structure de données.
-    return Stack()
+    s = Stack()
+    for i in range(len(data)):
+        if i == len(data) - position:
+            data.get()
+        else:
+            s.put(data.get())
+
+    return [s.get() for _ in range(len(s))]
 
 
 def delete_nth_from_queue(data: Queue, position: int) -> Queue:
@@ -64,7 +71,7 @@ def main() -> None:
 
     lifo = Stack()
     lifo.put_many([randint(0, 1000) for _ in range(20)])
-    print(f"On ordonne une file: {sort_queue(lifo)}")
+    print(f"On ordonne une file: {sort_stack(lifo)}")
 
     fifo = Queue()
     fifo.put_many([randint(0, 1000) for _ in range(20)])
